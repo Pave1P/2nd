@@ -7,7 +7,10 @@ private:
     float height;
 
 public:
-    Rectangle(float w, float h) : width(w), height(h) {}
+    Rectangle(float w, float h){
+        width=w;
+        height=h;
+    }
 
     float getArea() {
         return width * height;
