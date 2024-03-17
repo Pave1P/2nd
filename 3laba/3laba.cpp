@@ -1,52 +1,54 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstring>
+#include <string>
 
 class MyString {
 private:
-    char* m_data;
-    int m_length;
+    std::string str;
 
 public:
-    MyString(const char* data) {
-        m_length = strlen(data);
-        m_data = new char[m_length + 1];
-        strcpy(m_data, data);
-    }
 
+    // конструктор
+    MyString(std::string s) {  
+
+        str = s;
+    }
+    // конструктор копирования
     MyString(const MyString& other) {
-        m_length = other.m_length;
-        m_data = new char[m_length + 1];
-        strcpy(m_data, other.m_data);
-    }
 
+        str = other.str;
+    }
+    // оператор присваивания копированием
     MyString& operator=(const MyString& other) {
+
         if (this != &other) {
-            delete[] m_data;
-            m_length = other.m_length;
-            m_data = new char[m_length + 1];
-            strcpy(m_data, other.m_data);
+
+            str = other.str;
         }
         return *this;
     }
 
-    ~MyString() {
-        delete[] m_data;
-    }
+    // деструктор
+    ~MyString() {}
 
-    void display() {
-        std::cout << m_data << std::endl;
+    std::string getString() const {
+
+        return str;
     }
 };
 
 int main() {
-    MyString str1("Hello");
-    MyString str2 = str1;
-    MyString str3("World");
-    str3 = str2;
+    MyString s1("Hi"); // создание объекта s1 класса MyString
 
-    str1.display();
-    str2.display();
-    str3.display();
+    MyString s2 = s1; // использование конструктора копирования
+
+    MyString s3(""); // создание объекта s3 класса MyString
+
+    s3 = s1; // использование оператора присваивания копированием
+
+    std::cout << s1.getString() << std::endl;
+    std::cout << s2.getString() << std::endl;
+    std::cout << s3.getString() << std::endl;
 
     return 0;
 }
