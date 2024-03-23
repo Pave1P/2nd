@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
-
+using namespace std;
 class MyString {
 private:
-    std::string str;
+    string str;
 public:
     // конструктор
-    MyString(std::string s) {
+    MyString(string s) {
         str = s;
     }
     // конструктор копирования
@@ -20,9 +20,7 @@ public:
     }
     // деструктор
     ~MyString() {}
-
-    std::string getString() {
-
+    string getString() {
         return str;
     }
 };
@@ -34,10 +32,9 @@ int main() {
     MyString s3(""); // создание объекта s3 класса MyString
 
     s3 = s1; // использование оператора присваивания копированием
-
-    std::cout << s1.getString() << std::endl;
-    std::cout << s2.getString() << std::endl;
-    std::cout << s3.getString() << std::endl;
+    cout << s1.getString() << endl;
+    cout << s2.getString() << endl;
+    cout << s3.getString() << endl;
 
     return 0;
 }
