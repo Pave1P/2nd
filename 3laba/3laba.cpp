@@ -23,10 +23,9 @@ public:
 
     // Оператор присваивания копированием
     MyString& operator=(const MyString& other) {
-            delete[] str;
-            str = new char[strlen(other.str) + 1];
-            strcpy(str, other.str);
-        }
+        delete[] str;
+        str = new char[strlen(other.str) + 1];
+        strcpy(str, other.str);
         return *this;
     }
 
