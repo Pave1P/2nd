@@ -10,7 +10,7 @@ private:
 
 public:
     // Конструктор
-    MyString(const char* s = "") {
+    MyString(const char* s) {
         str = new char[strlen(s) + 1];
         strcpy(str, s);
     }
@@ -34,7 +34,7 @@ public:
         delete[] str;
     }
 
-    const char* getString() {
+    char* getString() {
         return str;
     }
 };
