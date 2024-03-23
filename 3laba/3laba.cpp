@@ -1,37 +1,55 @@
 #include <iostream>
 #include <string>
+#include <cstring>
+
 using namespace std;
+
 class MyString {
 private:
-    string str;
+    char* str;
+
 public:
-    // конструктор
-    MyString(string s) {
-        str = s;
+    // Конструктор
+    MyString(const char* s = "") {
+        str = new char[strlen(s) + 1];
+        strcpy(str, s);
     }
-    // конструктор копирования
+
+    // Конструктор копирования
     MyString(const MyString& other) {
-        str = other.str;
+        str = new char[strlen(other.str) + 1];
+        strcpy(str, other.str);
     }
-    // оператор присваивания копированием
+
+    // Оператор присваивания копированием
     MyString& operator=(const MyString& other) {
-        str = other.str;
+        if (this != &other) {
+            delete[] str;
+            str = new char[strlen(other.str) + 1];
+            strcpy(str, other.str);
+        }
         return *this;
     }
-    // деструктор
-    ~MyString() {}
-    string getString() {
+
+    // Деструктор
+    ~MyString() {
+        delete[] str;
+    }
+
+    const char* getString() {
         return str;
     }
 };
+
 int main() {
-    MyString s1("Hello world"); // создание объекта s1 класса MyString
+    MyString s1("Hello C++"); // Создание объекта s1 класса MyString
 
-    MyString s2 = s1; // использование конструктора копирования
+    MyString s2 = s1; // Использование конструктора копирования
 
-    MyString s3(""); // создание объекта s3 класса MyString
+    MyString s3(""); // Создание объекта s3 класса MyString
 
-    s3 = s1; // использование оператора присваивания копированием
+    s3 = s1; // Использование оператора присваивания копированием
+
     cout << s1.getString() << endl;
     cout << s2.getString() << endl;
     cout << s3.getString() << endl;
