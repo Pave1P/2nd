@@ -1,44 +1,33 @@
 #include <iostream>
-#include <cstring>
 #include <string>
 
 class MyString {
 private:
     std::string str;
-
 public:
-
     // конструктор
-    MyString(std::string s) {  
-
+    MyString(std::string s) {
         str = s;
     }
     // конструктор копирования
     MyString(const MyString& other) {
-
         str = other.str;
     }
     // оператор присваивания копированием
     MyString& operator=(const MyString& other) {
-
-        if (this != &other) {
-
-            str = other.str;
-        }
+        str = other.str;
         return *this;
     }
-
     // деструктор
     ~MyString() {}
 
-    std::string getString() const {
+    std::string getString() {
 
         return str;
     }
 };
-
 int main() {
-    MyString s1("Hi"); // создание объекта s1 класса MyString
+    MyString s1("Hello world"); // создание объекта s1 класса MyString
 
     MyString s2 = s1; // использование конструктора копирования
 
