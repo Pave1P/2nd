@@ -31,7 +31,7 @@ public:
     // деструктор
     ~MyString() {}
 
-    std::string getString() const {
+    std::string getString() {
 
         return str;
     }
