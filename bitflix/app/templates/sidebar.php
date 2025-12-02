@@ -6,13 +6,15 @@
 		<!-- Главная страница -->
 		<a href="<?= BASE_URL ?>pages/index.php" class="nav-item <?= $currentPage === 'home' ? '--active' : '' ?>">Главная</a>
 		<!-- Жанры -->
-		<?php $genres = getAllGenres(); ?>
-		<?php foreach ($genres as $key => $name): ?>
-			<a href="<?= BASE_URL ?>pages/index.php?genre=<?= urlencode($name) ?>"
-			   class="nav-item <?= ($genreName ?? '') === $name ? '--active' : '' ?>">
-				<?= htmlspecialchars($name) ?>
-			</a>
-		<?php endforeach; ?>
+		<div class="scrollable-nav">
+			<?php $genres = getAllGenres(); ?>
+			<?php foreach ($genres as $key => $name): ?>
+				<a href="<?= BASE_URL ?>pages/index.php?genre=<?= urlencode($name) ?>"
+				   class="nav-item <?= ($genreName ?? '') === $name ? '--active' : '' ?>">
+					<?= htmlspecialchars($name) ?>
+				</a>
+			<?php endforeach; ?>
+		</div>
 		<!-- Избранное -->
 		<a href="<?= BASE_URL ?>pages/favorites.php" class="nav-item <?= $currentPage === 'favorites' ? '--active' : '' ?>">Избранное</a>
 	</nav>

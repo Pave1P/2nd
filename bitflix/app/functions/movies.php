@@ -34,8 +34,8 @@ function getAllMovies(?string $genreFilter = null): array {
 				m.RELEASE_DATE,
 				m.RATING,
 				d.NAME AS DIRECTOR,
-				GROUP_CONCAT(a.NAME SEPARATOR ', ') AS CAST,
-				GROUP_CONCAT(g.NAME SEPARATOR ', ') AS GENRES
+				GROUP_CONCAT(DISTINCT a.NAME SEPARATOR ', ') AS CAST,
+				GROUP_CONCAT(DISTINCT g.NAME SEPARATOR ', ') AS GENRES
 			FROM movie m
 			LEFT JOIN director d ON m.DIRECTOR_ID = d.ID
 			LEFT JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
@@ -60,8 +60,8 @@ function getAllMovies(?string $genreFilter = null): array {
 				m.RELEASE_DATE,
 				m.RATING,
 				d.NAME AS DIRECTOR,
-				GROUP_CONCAT(a.NAME SEPARATOR ', ') AS CAST,
-				GROUP_CONCAT(g.NAME SEPARATOR ', ') AS GENRES
+				GROUP_CONCAT(DISTINCT a.NAME SEPARATOR ', ') AS CAST,
+				GROUP_CONCAT(DISTINCT g.NAME SEPARATOR ', ') AS GENRES
 			FROM movie m
 			LEFT JOIN director d ON m.DIRECTOR_ID = d.ID
 			LEFT JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
@@ -119,8 +119,8 @@ function getMovieById(int $id): ?array {
 			m.RELEASE_DATE,
 			m.RATING,
 			d.NAME AS DIRECTOR,
-			GROUP_CONCAT(a.NAME SEPARATOR ', ') AS CAST,
-			GROUP_CONCAT(g.NAME SEPARATOR ', ') AS GENRES
+			GROUP_CONCAT(DISTINCT a.NAME SEPARATOR ', ') AS CAST,
+			GROUP_CONCAT(DISTINCT g.NAME SEPARATOR ', ') AS GENRES
 		FROM movie m
 		LEFT JOIN director d ON m.DIRECTOR_ID = d.ID
 		LEFT JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
